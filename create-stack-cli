@@ -1,0 +1,12 @@
+aws cloudformation create-stack \
+  --template-body file://basic-pipeline.yml \
+  --stack-name CF-wordpress-pipeline \
+  --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM" \
+  --parameters \
+  ParameterKey=PipelineName,ParameterValue='CP-project-A' \
+  ParameterKey=S3Bucket,ParameterValue='my-cb-source-bucket-bk' \
+  ParameterKey=SourceS3Key,ParameterValue='wordpress-single-instance.zip' \
+  ParameterKey=TemplateFileName,ParameterValue='wordpress-single-instance.yaml' \
+  ParameterKey=TestStackName,ParameterValue='Test-MyWordPressSite' \
+  ParameterKey=ProdStackName,ParameterValue='Prod-MyWordPressSite' \
+  ParameterKey=Email,ParameterValue='bert.krol@icloud.com'
